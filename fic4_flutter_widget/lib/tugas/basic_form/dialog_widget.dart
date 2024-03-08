@@ -51,6 +51,7 @@ class _FICDialogWidgetState extends State<FICDialogWidget> {
               },
               child: const Text('Open Dialog'),
             ),
+            const SizedBox(height: 10.0),
             ElevatedButton(
               onPressed: () async {
                 await showModalBottomSheet<void>(
@@ -85,26 +86,92 @@ class _FICDialogWidgetState extends State<FICDialogWidget> {
               },
               child: const Text("Open BottomSheet"),
             ),
+            const SizedBox(height: 10.0),
             ElevatedButton(
                 onPressed: () async {
+                  bool confirm = false;
                   await showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Container(
-                          child: Wrap(
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  children: [Text("Confirm")],
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      });
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Wrap(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  const Text(
+                                    "Confirm",
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(
+                                    height: 20.0,
+                                  ),
+                                  const Text(
+                                      "Are you sure want to delete this item?"),
+                                  const SizedBox(
+                                    height: 20.0,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("No")),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.green),
+                                        onPressed: () {
+                                          confirm = true;
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Yes",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.normal)),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                  if (confirm) {
+                    print("Confirmed!");
+                  }
                 },
-                child: const Text("Open Bottomsheet")),
+                child: const Text("Open Bottomsheet confirmation")),
+            const SizedBox(height: 10.0),
+            ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Your request is successful"),
+                  ));
+                },
+                child: const Text("Open SnackBar ini")),
+            const SizedBox(
+              height: 20.0,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Your request is successful"),
+                  ));
+                },
+                child: const Text("Open SnackBar ini teruka ")),
+            const SizedBox(
+              height: 20.0,
+            ),
           ],
         ),
       ),
