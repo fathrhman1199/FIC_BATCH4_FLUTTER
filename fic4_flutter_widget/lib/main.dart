@@ -1,5 +1,15 @@
-import 'package:fic4_flutter_widget/tugas/basic_form/dialog_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_form/dialog_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_form/fic_formwidget.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_layout/fic_sizedbox_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_button_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_circle_avatar_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_container_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_icon_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_image_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_scaffold_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_text_widget.dart';
+import 'package:fic4_flutter_widget/widget_leason/basic_form/form_widget.dart';
+import 'package:fic4_flutter_widget/widget_leason/navigation/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FICDialogWidget(),
+      home: BottomNavbarWidget(),
       // Scaffold(
       //   appBar: AppBar(
       //     title: const Text('Jago Flutter'),

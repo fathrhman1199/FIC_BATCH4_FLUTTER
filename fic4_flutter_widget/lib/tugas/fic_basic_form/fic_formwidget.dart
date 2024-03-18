@@ -1,37 +1,36 @@
 import 'package:flutter/material.dart';
 
-class FormWidget extends StatefulWidget {
-  const FormWidget({Key? key}) : super(key: key);
+class FICFormWidget extends StatefulWidget {
+  const FICFormWidget({super.key});
 
   @override
-  State<FormWidget> createState() => _FormWidgetState();
+  State<FICFormWidget> createState() => _FICFormWidgetState();
 }
 
-class _FormWidgetState extends State<FormWidget> {
-  bool isOn = false;
+bool isOn = false;
 
-  var selected = 'Flutter';
-  final dropdownList = <String>['Flutter', 'Dart', 'Java', 'Scala', 'Python'];
+var selected = 'flutter';
+final dropdownList = <String>['flutter', 'Dart', 'Java', 'C++'];
+var sex = 'male';
+var isChecked = false;
+TextEditingController nameController = TextEditingController();
 
-  var sex = 'male';
-  var isChecked = false;
-  TextEditingController textController = TextEditingController(text: 'Sabrina');
-
+class _FICFormWidgetState extends State<FICFormWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('JagoFlutter - Form'),
+        title: const Text("Jago Flutter - Form Widget"),
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            padding: const EdgeInsets.all(10.0),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              //Nama TextName
               TextField(
                 maxLength: 20,
-                controller: textController,
+                controller: nameController,
                 decoration: const InputDecoration(
                   labelText: 'Name',
                   labelStyle: TextStyle(
@@ -42,15 +41,15 @@ class _FormWidgetState extends State<FormWidget> {
                       color: Colors.blueGrey,
                     ),
                   ),
-                  helperText: "What's your name?",
+                  helperText: "Nama anda ?",
                 ),
-                onChanged: (value) {},
               ),
+              //Row Pilih Bahasa
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text('Your Favorite Language:'),
+                  const Text("Bahasa Favorit Anda: "),
                   const SizedBox(
                     width: 8,
                   ),
@@ -80,50 +79,48 @@ class _FormWidgetState extends State<FormWidget> {
                   ),
                 ],
               ),
-              LayoutBuilder(builder: (context, constraint) {
+              //Pilih Gender
+              LayoutBuilder(builder: (context, constraints) {
                 List<String> itemStringList = ["Female", "Male"];
 
                 return FormField(
-                  initialValue: false,
-                  enabled: true,
-                  builder: (FormFieldState<bool> field) {
-                    return InputDecorator(
-                      decoration: InputDecoration(
-                        labelText: "Gender",
-                        errorText: field.errorText,
-                        helperText: "Your gender",
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: ButtonTheme(
-                          alignedDropdown: true,
+                    initialValue: false,
+                    enabled: true,
+                    builder: (FormFieldState<bool> field) {
+                      return InputDecorator(
+                        decoration: InputDecoration(
+                          labelText: "Gender",
+                          errorText: field.errorText,
+                          helperText: "Gender anda apa?",
+                        ),
+                        child: DropdownButtonHideUnderline(
+                            child: ButtonTheme(
                           child: DropdownButton<String>(
                             isExpanded: true,
                             value: "Female",
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 10.0),
                               child: Icon(
-                                Icons.arrow_drop_down_outlined,
+                                Icons.arrow_drop_down_sharp,
                                 size: 24.0,
                                 color: Theme.of(context)
                                     .textTheme
-                                    .bodyText1!
+                                    .bodyLarge!
                                     .color,
                               ),
                             ),
                             iconSize: 16,
                             elevation: 16,
-                            style: TextStyle(
-                              fontSize: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .fontSize,
-                              fontFamily: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .fontFamily,
-                              color:
-                                  Theme.of(context).textTheme.bodyText2!.color,
-                            ),
+                            // style: TextStyle(
+                            //   fontSize: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium!
+                            //       .fontSize,
+                            //   fontFamily: Theme.of(context)
+                            //       .textTheme
+                            //       .bodyMedium!
+                            //       .fontFamily,
+                            // ),
                             underline: Container(
                               height: 0,
                               color: Colors.grey[300],
@@ -143,12 +140,11 @@ class _FormWidgetState extends State<FormWidget> {
                               );
                             }).toList(),
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                );
+                        )),
+                      );
+                    });
               }),
+              //Conect to Instagram
               Row(
                 children: [
                   const Text('Connect Instagram'),
@@ -167,6 +163,7 @@ class _FormWidgetState extends State<FormWidget> {
                   ),
                 ],
               ),
+              //Gender Radio Button
               Row(
                 children: [
                   const Text('Gender :'),
@@ -212,6 +209,7 @@ class _FormWidgetState extends State<FormWidget> {
                   ),
                 ],
               ),
+              //I Agree (checkBox)
               Row(
                 children: [
                   Checkbox(
@@ -236,6 +234,7 @@ class _FormWidgetState extends State<FormWidget> {
                   ),
                 ],
               ),
+              //Birthday
               InkWell(
                 onTap: () async {
                   DateTime? pickedDate = await showDatePicker(
@@ -266,9 +265,7 @@ class _FormWidgetState extends State<FormWidget> {
                   onChanged: (value) {},
                 ),
               ),
-            ],
-          ),
-        ),
+            ])),
       ),
     );
   }
