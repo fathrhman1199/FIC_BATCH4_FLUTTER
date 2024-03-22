@@ -1,3 +1,5 @@
+import 'package:fic4_flutter_widget/save_prefense/counterbutton_withprefense.dart';
+import 'package:fic4_flutter_widget/save_prefense/pathProvider/counterbutton_withpath_provider.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_form/dialog_widget.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_form/fic_formwidget.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_layout/fic_sizedbox_widget.dart';
@@ -8,6 +10,15 @@ import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_icon_widget.dart'
 import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_image_widget.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_scaffold_widget.dart';
 import 'package:fic4_flutter_widget/tugas/fic_basic_widget/fic_text_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_bottom_navbar_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_drawer_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_navigatioan_pop.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_navigatorpush_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_silver_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_navigation/fic_tabbar_widget.dart';
+import 'package:fic4_flutter_widget/tugas/fic_restapi_display.dart/fic_restapi_allcategory_display.dart';
+import 'package:fic4_flutter_widget/tugas/fic_restapi_display.dart/fic_restapi_catogory_display.dart';
+
 import 'package:fic4_flutter_widget/widget_leason/basic_form/form_widget.dart';
 import 'package:fic4_flutter_widget/widget_leason/navigation/bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavbarWidget(),
+      home: CounterSharedPreferensWithPathProvider(),
       // Scaffold(
       //   appBar: AppBar(
       //     title: const Text('Jago Flutter'),
